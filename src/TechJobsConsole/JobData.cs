@@ -138,5 +138,61 @@ namespace TechJobsConsole
 
             return rowValues.ToArray();
         }
+
+        public static List<Dictionary<string, string>> FindByValue(string value)
+        {
+            //this method will search for a string within all the columns
+            //which are, namely, skill, employer,...
+
+            // load data, if not already loaded
+            LoadData();
+
+            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+
+            foreach (Dictionary<string, string> row in AllJobs)
+            {
+                //the columns would be dictionary keys, right?
+                //I'm searching for the value in all the columns of AllJobs
+
+                //iterating over each dictionary field forming each element in list
+                foreach (KeyValuePair<string, string> field in row)
+                {
+                   if(field.Value.Contains(value))
+                    {
+                        jobs.Add(row);
+                        break;
+                     
+                    }
+                }
+                
+
+                /*string aValue = row[value];
+
+                if (aValue.Contains(value))
+                {
+                    jobs.Add(row);
+                }*/
+                
+            }
+
+            return jobs;
+
+            //below is code for FindByColumnAndValue
+
+            /* foreach (Dictionary<string, string> row in AllJobs)
+            {
+                string aValue = row[column];
+
+                if (aValue.Contains(value))
+                {
+                    jobs.Add(row);
+                }
+            }
+
+            return jobs;
+              
+            */
+
+        }
     }
 }
