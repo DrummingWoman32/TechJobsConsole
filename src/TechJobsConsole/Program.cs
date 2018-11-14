@@ -123,17 +123,25 @@ namespace TechJobsConsole
             if(someJobs.Count != 0)
             {
                 // iterating over list
+<<<<<<< HEAD
                 Console.WriteLine();
                 foreach (Dictionary<string, string> row in someJobs)
                 {
                     
                     Console.WriteLine("******");
+=======
+                foreach (Dictionary<string, string> row in someJobs)
+                {
+>>>>>>> 197eb1f4b9efead37666d1b73c18410e83d3b036
                     //iterating over each dictionary field forming each element in list
                     foreach (KeyValuePair<string, string> field in row)
                     {
                         Console.WriteLine(field.Key + ": " + field.Value);
                     }
+<<<<<<< HEAD
                     Console.WriteLine("******");
+=======
+>>>>>>> 197eb1f4b9efead37666d1b73c18410e83d3b036
                     Console.WriteLine();
                     Console.WriteLine();
                 }

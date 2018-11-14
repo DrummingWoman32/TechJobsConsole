@@ -162,11 +162,15 @@ namespace TechJobsConsole
                 //iterating over each dictionary field forming each element in list
                 foreach (KeyValuePair<string, string> field in row)
                 {
+<<<<<<< HEAD
                     //string.Equals(val, "astringvalue", StringComparison.OrdinalIgnoreCase)
                     //if (field.Value.Contains(value))
                     //if(string.Equals(field.Value, value, StringComparison.OrdinalIgnoreCase))
                     //if(field.Value.Contains(value, StringComparison.OrdinalIgnoreCase))
                     if(String.Compare(value, field.Value, true) == 0)
+=======
+                   if(field.Value.Contains(value))
+>>>>>>> 197eb1f4b9efead37666d1b73c18410e83d3b036
                     {
                         jobs.Add(row);
                         break;
