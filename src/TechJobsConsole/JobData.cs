@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -49,7 +51,10 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                //string.Equals(val, "astringvalue", StringComparison.OrdinalIgnoreCase)
+
+                //if (aValue.Contains(value))
+                if(string.Equals(aValue, value, StringComparison.OrdinalIgnoreCase))
                 {
                     jobs.Add(row);
                 }
@@ -137,6 +142,66 @@ namespace TechJobsConsole
             valueBuilder.Clear();
 
             return rowValues.ToArray();
+        }
+
+        public static List<Dictionary<string, string>> FindByValue(string value)
+        {
+            //this method will search for a string within all the columns
+            //which are, namely, skill, employer,...
+
+            // load data, if not already loaded
+            LoadData();
+
+            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+
+            foreach (Dictionary<string, string> row in AllJobs)
+            {
+                //the columns would be dictionary keys, right?
+                //I'm searching for the value in all the columns of AllJobs
+
+                //iterating over each dictionary field forming each element in list
+                foreach (KeyValuePair<string, string> field in row)
+                {
+                    //string.Equals(val, "astringvalue", StringComparison.OrdinalIgnoreCase)
+                    //if (field.Value.Contains(value))
+                    //if(string.Equals(field.Value, value, StringComparison.OrdinalIgnoreCase))
+                    //if(field.Value.Contains(value, StringComparison.OrdinalIgnoreCase))
+                    if(String.Compare(value, field.Value, true) == 0)
+                    {
+                        jobs.Add(row);
+                        break;
+                     
+                    }
+                }
+                
+
+                /*string aValue = row[value];
+
+                if (aValue.Contains(value))
+                {
+                    jobs.Add(row);
+                }*/
+                
+            }
+
+            return jobs;
+
+            //below is code for FindByColumnAndValue
+
+            /* foreach (Dictionary<string, string> row in AllJobs)
+            {
+                string aValue = row[column];
+
+                if (aValue.Contains(value))
+                {
+                    jobs.Add(row);
+                }
+            }
+
+            return jobs;
+              
+            */
+
         }
     }
 }
